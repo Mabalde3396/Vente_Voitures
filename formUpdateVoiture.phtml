@@ -1,0 +1,109 @@
+<h1>Modifier une voiture !</h1>
+
+<form enctype="multipart/form-data" action="index.php?road=submitFormUpdateVoiture&id=<?= htmlspecialchars($_GET['id']) ?>" method="POST" >
+    <legend>Merci de renseigner les informations à modifier :</legend>
+
+    <?php require_once('_errors.phtml');?>
+    <?php require_once('_valids.phtml');?>
+
+    
+
+    <label for="name">Nom de la voiture :</label>
+    <input  type="text"
+            name="name"
+            value="<?php if(isset($voiture['name'])) {
+                            echo htmlspecialchars($voiture['name']);
+                        } ?>">
+
+    <label for="start">Année :</label>
+    <input type="date" id="start" name="annee"
+    value="<?php if(isset($voiture['annee'])) {
+                            echo htmlspecialchars($voiture['annee']);
+                        } ?>">
+
+    
+    <label for="start">Prix :</label>
+    <input type="text" id="prix" name="prix" 
+    value="<?php if(isset($voiture['prix'])) {
+                            echo htmlspecialchars($voiture['prix']);
+                        } ?>">
+    
+   <select name="carburant" class="categorie">
+        <option value="">CARBURANT</option>
+        <?php foreach($carburants as $carburant): ?>
+            <?= htmlspecialchars($carburant['id']) ?>"><?= htmlspecialchars($carburant['carb_name']) ?>
+            
+            
+            <option value="<?= htmlspecialchars($carburant['id']) ?>" <?php if($carburant['id'] == $voiture['carb_id']) echo "selected"; ?> >
+                <?= htmlspecialchars($carburant['carb_name']) ?></option>
+
+            
+            
+        <?php endforeach; ?>
+    </select>
+    
+    <select name="transmission" class="categorie">
+        <option value="">TRANSMISSION</option>
+        <?php foreach($transmissions as $transmission): ?>
+            <!--<option value="<?= htmlspecialchars($transmission['id']) ?>"><?= htmlspecialchars($transmission['trans_name']) ?></option>-->
+            
+            <option value="<?= htmlspecialchars($transmission['id']) ?>" <?php if($transmission['id'] == $voiture['trans_id']) echo "selected"; ?> >
+                <?= htmlspecialchars($transmission['trans_name']) ?></option>
+            
+        <?php endforeach; ?>
+    </select>
+    
+    <label for="kilometrage">Kilometrage :</label>
+    <input type="text" id="kilometrage" name="kilometrage"
+    value="<?php if(isset($voiture['kilometrage'])) {
+                            echo htmlspecialchars($voiture['kilometrage']);
+                        } ?>">
+    
+    <fieldset>
+        <label for="imag_voiture">Image principale : </label>
+        <input type="file" accept="image/*" name="imag_voiture" id="imag_voiture" class="flyover">
+    </fieldset>
+    
+    <label for="description">Description :</label>
+    <textarea id="story" name="description" rows="5" cols="33" 
+    ><?php if(isset($voiture['description'])) {
+                            echo htmlspecialchars($voiture['description']);
+                        } ?>
+    </textarea>
+
+    <select name="categorie" class="categorie">
+        <option value="">CATEGORIE</option>
+        <?php foreach($categories as $category): ?>
+            <option value="<?= htmlspecialchars($category['id']) ?>"><?= htmlspecialchars($category['cat_name']) ?></option>
+            
+            <option value="<?= htmlspecialchars($category['id']) ?>" <?php if($category['id'] == $voiture['cat_id']) echo "selected"; ?> >
+                <?= htmlspecialchars($category['cat_name']) ?></option>
+            
+        <?php endforeach; ?>
+    </select>
+    
+    <select name="marque" class="categorie">
+        <option value="">MARQUES</option>
+        <?php foreach($marques as $marque): ?>
+            <option value="<?= htmlspecialchars($marque['id']) ?>" ><?= htmlspecialchars($marque['marq_name']) ?></option>
+            
+            <option value="<?= htmlspecialchars($marque['id']) ?>" <?php if($marque['id'] == $voiture['marq_id']) echo "selected"; ?> >
+                <?= htmlspecialchars($marque['marq_name']) ?></option>
+            
+        <?php endforeach; ?>
+    </select>
+    
+    <select name="modele" class="categorie">
+        <option value="">MODELES</option>
+        <?php foreach($modeles as $modele): ?>
+            <option value="<?= htmlspecialchars($modele['id']) ?>"><?= htmlspecialchars($modele['mod_name']) ?></option>
+          <option value="<?= htmlspecialchars($modele['id']) ?>" <?php if($modele['id'] == $voiture['mod_id']) echo "selected"; ?> >
+                <?= htmlspecialchars($modele['mod_name']) ?></option>  
+            
+        <?php endforeach; ?>
+    </select>
+    
+    
+    
+     <input type="submit" value="Modifier"/>
+</form>

@@ -1,0 +1,22 @@
+<h2>Votre recherche</h2>
+<section class="menu" id="targetViews">
+	<?php foreach($voitures as $voiture): ?>
+		<article>
+			<h3><?= htmlspecialchars($voiture['name']) ?></h3>
+			<figure>
+				<img src="public/uploads/img_voitures/<?= $voiture['image_pr'] ?>" alt="image">
+				<figcaption><?= htmlspecialchars($voiture['prix']) ?> €<br>
+				</figcaption>
+			</figure>
+			<ul>
+				<li><i class="fas fa-star"></i>Année : <?= htmlspecialchars(date_format(date_create(($voiture['annee'])), 'd/m/Y')) ?></li>
+				<li><i class="fas fa-star"></i>kilometrage : <?= htmlspecialchars($voiture['kilometrage']) ?></li>
+			    <li><?= nl2br(htmlspecialchars($voiture['description'])) ?></li>
+			    <li><a href="index.php?road=detailsOfOneVoiture&id=<?= htmlspecialchars($voiture['id']) ?>" class="moreInformations">Voir cette voiture</a></li>
+			    <li><a href="index.php?road=displayFormUpdateVoiture&id=<?= htmlspecialchars($voiture['id']) ?>" class="moreInformations">Modifier cette voiture</a></li>
+			    <li><a href="index.php?road=deleteVoiture&id=<?= htmlspecialchars($voiture['id']) ?>" class="moreInformations">Supprimer cette voiture</a></li>
+			</ul>
+		</article>
+	<?php endforeach; ?>
+		<p>J'ai trouvé <?= $numberOfVoitures ?> voiture(s) correspondant à votre recherche</p>
+</section>

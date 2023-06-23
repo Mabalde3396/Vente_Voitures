@@ -1,0 +1,73 @@
+<h1>Ajouter une voiture !</h1>
+
+<form enctype="multipart/form-data" action="index.php?road=submitFormAddVoiture" method="POST">
+    <legend>Merci de renseigner les information suivantes :</legend>
+
+    <?php require_once('_errors.phtml');?>
+    <?php require_once('_valids.phtml');?>
+
+    
+
+    <label for="name">Nom de la voiture :</label>
+    <input  type="text"
+            name="name"
+            value="<?php if(isset($addVoiture['addname'])) {
+                            echo htmlspecialchars($addVoiture['addname']);
+                        } ?>">
+
+    <label for="start">Année :</label>
+    <input type="date" id="start" name="annee">
+    
+    <label for="start">Prix :</label>
+    <input type="text" id="prix" name="prix">
+    
+   <select name="carburant" class="categorie">
+        <option value="">CARBURANT</option>
+        <?php foreach($carburants as $carburant): ?>
+            <option value="<?= htmlspecialchars($carburant['id']) ?>"><?= htmlspecialchars($carburant['carb_name']) ?></option>
+        <?php endforeach; ?>
+    </select>
+    
+    <select name="transmission" class="categorie">
+        <option value="">TRANSMISSION</option>
+        <?php foreach($transmissions as $transmission): ?>
+            <option value="<?= htmlspecialchars($transmission['id']) ?>"><?= htmlspecialchars($transmission['trans_name']) ?></option>
+        <?php endforeach; ?>
+    </select>
+    
+    <label for="kilometrage">Kilometrage :</label>
+    <input type="text" id="kilometrage" name="kilometrage">
+    
+    <fieldset>
+        <label for="imag_voiture">Image principale : </label>
+        <input type="file" accept="image/*" name="imag_voiture" id="imag_voiture" class="flyover">
+    </fieldset>
+    
+    <label for="description">Description :</label>
+    <textarea id="story" name="description" rows="5" cols="33"></textarea>
+
+    <select name="categorie" class="categorie">
+        <option value="">CATEGORIE</option>
+        <?php foreach($categories as $category): ?>
+            <option value="<?= htmlspecialchars($category['id']) ?>"><?= htmlspecialchars($category['cat_name']) ?></option>
+        <?php endforeach; ?>
+    </select>
+    
+    <select name="marque" class="categorie">
+        <option value="">MARQUES</option>
+        <?php foreach($marques as $marque): ?>
+            <option value="<?= htmlspecialchars($marque['id']) ?>" ><?= htmlspecialchars($marque['marq_name']) ?></option>
+        <?php endforeach; ?>
+    </select>
+    
+    <select name="modele" class="categorie">
+        <option value="">MODELES</option>
+        <?php foreach($modeles as $modele): ?>
+            <option value="<?= htmlspecialchars($modele['id']) ?>"><?= htmlspecialchars($modele['mod_name']) ?></option>
+        <?php endforeach; ?>
+    </select>
+    
+    
+    
+     <input type="submit" value="Valider"/>
+</form>

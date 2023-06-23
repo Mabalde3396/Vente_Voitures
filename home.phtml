@@ -1,0 +1,31 @@
+
+<section class="intro">
+	<h1>Acheter votre voiture</h1>
+</section>
+
+<section class="menu" id="targetViews">
+	<h2>Nos voitures</h2>
+
+	<?php foreach($voitures as $voiture): ?>
+	<article>
+		<h3><?= htmlspecialchars($voiture['name']) ?></h3>
+		<figure>
+			<img src="public/uploads/img_voitures/<?= $voiture['image_pr'] ?>" alt="image">
+			<figcaption><?= htmlspecialchars($voiture['prix']) ?> €<br></figcaption>
+		</figure>
+		<ul>
+			<li>Année : <?= htmlspecialchars(date_format(date_create(($voiture['annee'])), 'd/m/Y')) ?></li>
+			<li>kilometrage : <?= htmlspecialchars($voiture['kilometrage']) ?></li>
+		    <li><?= nl2br(htmlspecialchars($voiture['description'])) ?></li>
+		   <li><a href="index.php?road=detailsOfOneVoiture&id=<?= htmlspecialchars($voiture['id']) ?>" class="moreInformations">Voir cette voiture</a></li>
+		   
+			   <?php if(isset($_SESSION['user']) && $_SESSION['user']['role'] == "admin") : ?>
+			   <li><a href="index.php?road=displayFormUpdateVoiture&id=<?= htmlspecialchars($voiture['id']) ?>" class="moreInformations">Modifier cette voiture</a></li>
+			   <li><a href="index.php?road=deleteVoiture&id=<?= htmlspecialchars($voiture['id']) ?>" class="moreInformations">Supprimer cette voiture</a></li>
+			   <?php endif; ?>
+		   
+		   
+		</ul>
+		</article>
+	<?php endforeach; ?>
+</section>

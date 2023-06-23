@@ -1,0 +1,10 @@
+<div class="identification">
+  <?php if(isset($_SESSION['connected']) && $_SESSION['connected'] == true): ?>
+    <img class="avatar" src="public/uploads/users/<?= $_SESSION['user']['image']?>" alt="Image avatar">
+    <h5>Bonjour <?= $_SESSION['user']['username'] ?></h5>
+  <?php else: ?>
+    <img class="avatar" src="public/uploads/users/silhouette.png" alt="Image silhoutte">
+    <h5>Merci de bien vouloir vous identifier SVP !</h5>
+  <?php endif; ?>
+</div>
+

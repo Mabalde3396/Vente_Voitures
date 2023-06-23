@@ -1,0 +1,36 @@
+
+<?php if(!empty($voiture)): ?>
+
+	<section class="intro">
+		<h1><?= htmlspecialchars($voiture['name']) ?></h1>
+	</section>
+	<section>
+		<article>
+			<section class="detailsVoiture">
+				<div class="imgprincipale">
+					<img src="public/uploads/img_voitures/<?= htmlspecialchars($voiture['image_pr']) ?>" alt="image"><br>
+					<?= nl2br(htmlspecialchars($voiture['description'])) ?><br>
+					Année : <?= htmlspecialchars(date_format(date_create(($voiture['annee'])), 'd/m/Y'))?><br>
+					Prix : <?= htmlspecialchars($voiture['prix']) ?> €
+					
+				</div>
+					
+			</section>
+		</article>
+	</section>
+
+	<section class="listImg">
+		<?php if(!empty($allImages)): ?>
+			<?php foreach($allImages as $img): ?>
+			    <div>
+					<img src="public/uploads/img_Of_Voitures/<?= htmlspecialchars($img['image']) ?>" alt="Image" class="imgDetails" >
+				</div>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<h2>Aucune image disponible actuellement pour cette voiture !</h2>
+		<?php endif; ?>
+		</div>
+	</section>
+<?php else: ?>
+	<h2>Aucune voiture n'a été trouvée !</h2>
+<?php endif; ?>

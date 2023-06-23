@@ -1,0 +1,14 @@
+<h1>La liste des utilisateurs du site</h1>
+
+<main class="container mixitup">
+    <div class="choice">
+        <?php foreach($users as $user) : ?>
+            <figure>
+                <p><?= htmlspecialchars($user['username']) ?></p>
+                <img class="avatarPicture" src="public/uploads/users/<?= $user['user_img']; ?>" alt="<?= htmlspecialchars($user['user_img']); ?>">
+                <p><?= htmlspecialchars($user['password']); ?></p>
+                <p><?= htmlspecialchars($user['email']); ?></p>
+            </figure>
+        <?php endforeach; ?>
+    </div>
+</main>

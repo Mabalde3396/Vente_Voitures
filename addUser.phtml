@@ -1,0 +1,31 @@
+<h1>Création d'un compte !</h1>
+
+<form enctype="multipart/form-data" action="index.php?road=submitFormAddUser" method="POST">
+    <legend>Merci de renseigner les information suivantes :</legend>
+    <?php require_once('_errors.phtml');?>
+    <?php require_once('_valids.phtml');?>
+
+    <label for="userName">Entrez votre nom d'utilisateur</label>
+    <input type="text" name="username" size="30">
+    
+    <label for="userfileAvatar">Votre photo : </label>
+    <input type="file" accept="image/*" name="userimg">
+    <small class="form-text text-muted">Sélectionnez une image : Formats ['jpg', 'jpeg', 'gif', 'png'].</small>
+
+    <label for="email">Entrez votre email</label>
+    <input type="text" name="email" size="30">
+
+    <label for="password">Choisissez un mot de passe</label>
+    <div><input type="password" name="password" id="password_1" size="30"></div>
+
+    <label for="password_verify">Confirmez le mot de passe choisi</label>
+    <div><input type="password" name="password_confirme" id="password_2" size="30"></div>
+
+   
+
+    <input type="submit" value="Valider"/>
+
+</form>
+
+
+

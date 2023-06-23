@@ -1,0 +1,17 @@
+
+<?php
+
+if (isset($valids) && count($valids) > 0) : ?>
+  <div id="messageValidation">
+      <div>
+        <img src="public/img/validation.png" alt="Validation" class="imgErrorAndValid"/>
+      </div>
+    <div>
+      <ul>
+        <?php foreach ($valids as $valid) : ?>
+          <li class="valid"><?= $valid; ?></li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  </div>
+<?php endif; ?>
